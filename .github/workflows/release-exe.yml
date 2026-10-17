@@ -1,0 +1,36 @@
+name: Build Windows executable
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt pyinstaller
+
+      - name: Build executable
+        run: pyinstaller --collect-all lotus_lamp --collect-all bleak --collect-all colorsys __main__.py
+
+      - name: Upload executable distribution
+        uses: actions/upload-artifact@v4
+        with:
+          name: wled-server-windows-${{ github.event.release.tag_name }}
+          path: dist/__main__/
+          if-no-files-found: error
