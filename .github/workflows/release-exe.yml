@@ -5,7 +5,7 @@ on:
     types: [published]
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   build:
@@ -34,3 +34,11 @@ jobs:
           name: wled-server-windows-${{ github.event.release.name }}
           path: dist/__main__/
           if-no-files-found: error
+
+      - name: Package executable for release
+        run: Compress-Archive -Path dist/__main__ -DestinationPath dist/wled-server-windows.zip
+
+      - name: Upload package to GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/wled-server-windows.zip
