@@ -119,3 +119,9 @@ dns-sd -B _wled._tcp
 
 With `--dry-run`, the terminal running the server will log the color/power/brightness
 calls it *would* have made to the lamp instead of touching BLE.
+
+## Thanks
+
+Thanks to [William Porter (@wporter82)](https://github.com/wporter82) for creating
+the [lotus-lamp-python library](https://github.com/wporter82/lotus-lamp-python) that
+this server uses to communicate with the Lotus Lamp.
