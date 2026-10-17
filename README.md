@@ -52,6 +52,27 @@ this server:
 4. No lamp nearby, or just testing the network layer? Add `--dry-run` — the server
    skips the BLE connection entirely and just logs what it would have sent.
 
+## Building a standalone Windows executable
+
+From the repository root, install PyInstaller and the project dependencies:
+
+```powershell
+py -m pip install pyinstaller
+py -m pip install -r wled_server/requirements.txt
+```
+
+Then build from the `wled_server` directory, where `__main__.py` is located:
+
+```powershell
+cd wled_server
+pyinstaller --collect-all lotus_lamp --collect-all bleak --collect-all colorsys __main__.py
+```
+
+The executable and its bundled files are written to `wled_server/dist/__main__/`.
+Keep the files in that folder together when distributing or running the executable.
+Build on Windows to produce a Windows executable. The lamp's configuration file
+must also be available when running the bundled server.
+
 ## Adding it in SignalRGB
 
 - **Automatic**: with the server running on port 80, SignalRGB's WLED plugin should
