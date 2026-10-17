@@ -14,7 +14,7 @@ import socket
 from zeroconf import ServiceInfo
 from zeroconf.asyncio import AsyncZeroconf
 
-from .config import ServerConfig
+from wled_server.config import ServerConfig
 
 logger = logging.getLogger("wled_server.discovery")
 

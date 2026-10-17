@@ -22,9 +22,9 @@ import asyncio
 import logging
 from typing import List, Tuple
 
-from .config import ServerConfig
-from .lamp_bridge import LampBridge
-from .state import WledState
+from wled_server.config import ServerConfig
+from wled_server.lamp_bridge import LampBridge
+from wled_server.state import WledState
 
 logger = logging.getLogger("wled_server.udp_realtime")
 

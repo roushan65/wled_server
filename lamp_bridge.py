@@ -10,7 +10,7 @@ from typing import Optional, Tuple
 
 from lotus_lamp import LotusLamp
 
-from .config import ServerConfig
+from wled_server.config import ServerConfig
 
 logger = logging.getLogger("wled_server.lamp_bridge")
 

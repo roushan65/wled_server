@@ -8,12 +8,12 @@ import signal
 
 from aiohttp import web
 
-from .config import ServerConfig
-from .discovery import Discovery
-from .http_api import build_app
-from .lamp_bridge import LampBridge
-from .state import WledState
-from .udp_realtime import create_realtime_listener, realtime_timeout_watchdog
+from wled_server.config import ServerConfig
+from wled_server.discovery import Discovery
+from wled_server.http_api import build_app
+from wled_server.lamp_bridge import LampBridge
+from wled_server.state import WledState
+from wled_server.udp_realtime import create_realtime_listener, realtime_timeout_watchdog
 
 logger = logging.getLogger("wled_server.server")
 

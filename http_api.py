@@ -16,10 +16,10 @@ from typing import Any, Dict
 
 from aiohttp import web
 
-from . import __version__
-from .config import ServerConfig
-from .lamp_bridge import LampBridge
-from .state import WledState
+from wled_server import __version__
+from wled_server.config import ServerConfig
+from wled_server.lamp_bridge import LampBridge
+from wled_server.state import WledState
 
 logger = logging.getLogger("wled_server.http_api")
 
