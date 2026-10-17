@@ -26,17 +26,17 @@ jobs:
           python -m pip install -r requirements.txt pyinstaller
 
       - name: Build executable
-        run: pyinstaller --collect-all lotus_lamp --collect-all bleak --collect-all colorsys __main__.py
+        run: pyinstaller --collect-all lotus_lamp --collect-all bleak --collect-all colorsys -n wled-server __main__.py
 
       - name: Upload executable distribution
         uses: actions/upload-artifact@v4
         with:
           name: wled-server-windows-${{ github.event.release.name }}
-          path: dist/__main__/
+          path: dist/wled-server/
           if-no-files-found: error
 
       - name: Package executable for release
-        run: Compress-Archive -Path dist/__main__ -DestinationPath dist/wled-server-windows.zip
+        run: Compress-Archive -Path dist/wled-server -DestinationPath dist/wled-server-windows.zip
 
       - name: Upload package to GitHub Release
         uses: softprops/action-gh-release@v2
