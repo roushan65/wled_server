@@ -24,13 +24,18 @@ this server:
 
 ## Setup
 
-1. One-time: configure the lamp's BLE address with the existing library's setup wizard
-   (from the `lotus-lamp-python` directory):
+1. On first launch, if no `lotus_lamp_config.json` (or global Lotus Lamp config) is found,
+  the server runs the setup wizard in the console to scan for nearby lamps. Keep the lamp
+  powered on and nearby, then save the configuration in the current directory or the
+  suggested user config directory. You can also configure it manually with the library's
+  setup wizard (from the `lotus-lamp-python` directory):
    ```bash
    python -m lotus_lamp.setup
    ```
-   This creates a `lotus_lamp_config.json`. The bridge server uses the library's normal
-   config search path, so no separate config format is needed.
+  This creates a `lotus_lamp_config.json`. The bridge server uses the library's normal
+  config search path, so no separate config format is needed. When using `--lamp-config`
+  with a path that does not exist, the wizard still runs; choose the custom-location option
+  and enter that exact path.
 
 2. Install dependencies:
    ```bash
@@ -70,8 +75,9 @@ pyinstaller --collect-all lotus_lamp --collect-all bleak --collect-all colorsys 
 
 The executable and its bundled files are written to `wled_server/dist/__main__/`.
 Keep the files in that folder together when distributing or running the executable.
-Build on Windows to produce a Windows executable. The lamp's configuration file
-must also be available when running the bundled server.
+Build on Windows to produce a Windows executable. On first launch, the executable runs
+the bundled setup wizard if no lamp configuration is found; no separate Python installation
+or pre-existing `lotus_lamp_config.json` is required.
 
 ## Adding it in SignalRGB
 
